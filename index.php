@@ -25,12 +25,12 @@ function connectToInstagram($url){
 	return $result;
 }
 //Function to get user ID cause userName doesn't allow us to get pictures!
-function getUser($userName){
-	$url = 'http://api.instagram.com/v1/users/search?q='.$userName.'&client_id'.clientID;
+function getUserID($userName){
+	$url = 'https://api.instagram.com/v1/users/search?q='.$userName.'&client_id='.clientID;
 	$instagramInfo = connectToInstagram($url);
-	$result = json_decode($instagramInfo, true);
+	$results = json_decode($instagramInfo, true);
 
-	echo $result['data']['0']['id'];
+	return $results['data']['0']['id'];
 }
 //Function to print out images onto our screen
 function printImages($userID){
@@ -47,7 +47,7 @@ function printImages($userID){
 
 
 if(isset($_GET['code'])){
-	$code = ($_GET['code']);
+	$code = $_GET['code'];
 	$url = 'https://api.instagram.com/oauth/access_token';
 	$access_token_settings = array('client_id' => clientID,
 									'client_secret' => clientSecret, 
@@ -69,11 +69,13 @@ $results = json_decode($result, true);
 
 $userName = $results['user']['username'];
 
-$userID = getUserID($username);
+$userID = getUserID($userName);
+
+printImages($userID);
 }
 
-printImage($userID);
-else {
+
+//else {
 ?>
 
 <!DOCTYPE html>
@@ -90,11 +92,8 @@ else {
 		<!-- create a login for people to go to Instagram AOI -->
 		<!-- creating a link to instagram through oauth/authorizing the account -->
 		<!-- After setting client_id to blank in the beginning, along with redirect_uri then you have to echo it out from the constant. -->
-		<a href="https:api.instagram.com/oauth/authorize/?client_id=<?php echo clientID; ?>&redirect_uri=<?php echo redirectURI; ?>&response_type=code">LOGIN IN</a>	
+		<a href="https://api.instagram.com/oauth/authorize/?client_id=<?php echo clientID; ?>&redirect_uri=<?php echo redirectURI; ?>&response_type=code">LOGIN IN</a>	
 		<script src="js/main.js"></script>	
 
 </body>
 </html>
-<?php
-}
-?>
