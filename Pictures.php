@@ -90,32 +90,3 @@ printImages($userID);
 
 else {}
 ?>
-
-<!DOCTYPE html>
-<html>
-	<head>
-		<link type="text/css" rel="stylesheet"  href="css/bootstrap.css.map">
-		<link type="text/css" rel="stylesheet"  href="css/bootstrap.css">
-		<link type="text/css" rel="stylesheet"  href="css/bootstrap-theme.css">
-		<link type="text/css" rel="stylesheet"  href="css/bootstrap-theme.css.map">
-		<link type="text/css" rel="stylesheet"  href="css/main.css">
-		<meta charset="utf-8">
-		<meta name="description" content="">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>API Project</title>
-		<link rel="stylesheet" href="css/main.css">
-		<link rel="author" href="humans.txt">
-	</head>
-	<body>
-		<!-- create a login for people to go to Instagram AOI -->
-		<!-- creating a link to instagram through oauth/authorizing the account -->
-		<!-- After setting client_id to blank in the beginning, along with redirect_uri then you have to echo it out from the constant. -->
-<button>
-	<div class="nav">
-		<a href="https://api.instagram.com/oauth/authorize/?client_id=<?php echo clientID; ?>&redirect_uri=<?php echo redirectURI; ?>&response_type=code">LOGIN IN</a>
-	</div>
-</button>
-		<script src="js/main.js"></script>	
-
-</body>
-</html>
